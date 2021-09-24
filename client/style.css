@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+body {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+#message-container {
+    width: 80%;
+    max-width: 1200px;
+    padding-bottom: 10px;
+}
+#message-container div {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #CCC;
+    padding: 5px;
+}
+#message-container div:nth-child(2n) {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #FFF;
+}
+#send-container {
+    position: fixed;
+    padding-bottom: 30px;
+    bottom: 0;
+    background-color: #FFF;
+    max-width: 1200px;
+    width: 80%;
+    display: flex;
+}
+#message-input {
+    flex-grow: 1;
+    font-family: 'Open Sans', sans-serif;
+}
+#send-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
