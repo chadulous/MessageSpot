@@ -12,7 +12,10 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "sanitize": "^2.1.0",
+    "sanitize-html": "^2.5.1",
     "short-uuid": "^4.2.0",
+    "showdown": "^1.9.1",
     "socket.io": "^4.2.0"
   },
   "devDependencies": {
