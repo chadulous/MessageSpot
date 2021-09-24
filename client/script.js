@@ -2,6 +2,14 @@ const socket = io('')
 const messageContainer = document.getElementById('message-container')
 const messageForm = document.getElementById('send-container')
 const messageInput = document.getElementById('message-input')
+var dark = true;
+function httpGet(theUrl)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+}
 function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
@@ -35,7 +43,6 @@ else {
 appendMessage(`${uname} (you) Joined`)
 socket.emit('new-user', uname)
 socket.on('chat-message', (data) => {
-    console.log(data)
     appendMessage(`${data.name}: ${data.message}`)
 })
 socket.on('get', () => {
@@ -50,8 +57,8 @@ socket.on('user-disconnected', name => {
 messageForm.addEventListener('submit', e => {
     e.preventDefault()
     if(messageInput.value.length !== 0) {
-        const message = messageInput.value
-        appendMessage(`${uname} (you): ${message}`)
+        const message = httpGet(`/sanitize?string=${encodeURI(messageInput.value)}`)
+        appendMessage(`<p>${uname} (you): ${message}</p>`)
         socket.emit('send-chat-message', message)
         messageInput.value = ''
     }
@@ -59,6 +66,15 @@ messageForm.addEventListener('submit', e => {
 function appendMessage(message) {
     const messageElement = document.createElement('div')
     messageElement.classList.add('card')
+    if(dark) {
+        messageElement.classList.add('dark')
+    }
     messageElement.innerHTML = message;
+    messageElement.querySelectorAll('*').forEach(
+        function(currentValue, currentIndex, listObj) {
+          currentValue.classList.add('dark')
+        },
+        "this"
+    );
     messageContainer.append(messageElement)
 }

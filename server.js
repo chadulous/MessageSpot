@@ -4,17 +4,24 @@ const http = require('http');
 const server = http.createServer(app);
 const sanitizeHtml = require('sanitize-html');
 const port = process.env.PORT || 8080
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
 var showdown  = require('showdown'),
     converter = new showdown.Converter()
 var sanitize = (text) => {
-	return converter.makeHtml(sanitizeHtml(text))
+	text = (new JSDOM(converter.makeHtml(sanitizeHtml(text)))).window.document.querySelector("p").innerHTML
+	console.log(text)
+	return text
 } 
 app.get('/', (req, res) => {
 	res.sendFile(__dirname + '/client/index.html');
 });
 app.use('/static',express.static('client'))
 const io = require('socket.io')(server);
-
+app.get('/sanitize', (req, res) => {
+	data = decodeURI(req.query.string);
+	res.send(sanitize(data));
+});
 const users = {};
 
 io.on('connection', socket => {

@@ -12,18 +12,12 @@ body {
 }
 #message-container div {
     font-family: 'Open Sans', sans-serif;
-    background-color: #CCC;
     padding: 5px;
-}
-#message-container div:nth-child(2n) {
-    font-family: 'Open Sans', sans-serif;
-    background-color: #FFF;
 }
 #send-container {
     position: fixed;
     padding-bottom: 30px;
     bottom: 0;
-    background-color: #FFF;
     max-width: 1200px;
     width: 80%;
     display: flex;
@@ -32,8 +26,35 @@ body {
     flex-grow: 1;
     font-family: 'Open Sans', sans-serif;
 }
+.form-control,
+.form-control:active,
+.form-control:focus,
+.form-control:focus:active {
+  background-color: #e6e6e6!important;
+  border-color: #808080;
+  color: #222;
+}
+.form-control.dark,
+.form-control:active.dark,
+.form-control:focus.dark,
+.form-control:focus:active.dark {
+  background-color: #222!important;
+  border-color: #808080;
+  color: #e6e6e6;
+}
 #send-button {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+p {
+    display: inline-block;
+    margin: 0;
+}
+.dark{
+    background-color: #222;
+    color: #e6e6e6;
+}
+.no-bg {
+    background: transparent;
 }
