@@ -26,6 +26,6 @@ io.on('connection', socket => {
 	socket.emit('get')
 });
 
-server.listen(8080, () => {
-	console.log('listening on *:8080');
+server.listen(5000, () => {
+	console.log('listening on *:500');
 });
