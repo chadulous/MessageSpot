@@ -3,6 +3,7 @@ const app = express();
 const http = require('http');
 const server = http.createServer(app);
 const sanitizeHtml = require('sanitize-html');
+const port = process.env.PORT || 8080
 var showdown  = require('showdown'),
     converter = new showdown.Converter()
 var sanitize = (text) => {
@@ -22,7 +23,9 @@ io.on('connection', socket => {
 		socket.broadcast.emit('user-connected', name);
 	});
 	socket.on('send-chat-message', message => {
-		socket.broadcast.emit('chat-message', { message: sanitize(message), name: users[socket.id] });
+		message = sanitize(message)
+		console.log(message)
+		socket.broadcast.emit('chat-message', { message: message, name: users[socket.id] });
 	});
 	socket.on('disconnect', () => {
 		socket.broadcast.emit('user-disconnected', users[socket.id]);
@@ -31,6 +34,6 @@ io.on('connection', socket => {
 	socket.emit('get')
 });
 
-server.listen(process.env.PORT || 8080, () => {
-	console.log(`listening on *:${process.env.PORT || 8080}`);
+server.listen(port, () => {
+	console.log(`listening on *:${port}`);
 });
