@@ -26,6 +26,6 @@ io.on('connection', socket => {
 	socket.emit('get')
 });
 
-server.listen(80, () => {
-	console.log('listening on *:80');
+server.listen(process.env.PORT || 8080, () => {
+	console.log(`listening on *:${process.env.PORT || 8080}`);
 });
