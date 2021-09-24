@@ -31,6 +31,26 @@ function setCookie(cname, cvalue, exdays) {
     let expires = "expires="+ d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
+var themecookie = getCookie('dark')
+console.log(themecookie)
+if(themecookie === undefined) {
+    setCookie('dark', dark, 99999999)
+}
+console.log(themecookie)
+dark = eval(themecookie)
+if(!dark) {
+    var element = document.body.querySelectorAll('*');
+    var icon = document.body.querySelector('.mode');
+    element.forEach(
+      function(currentValue, currentIndex, listObj) {
+        currentValue.classList.toggle('dark')
+      },
+      "this"
+    );
+    document.body.classList.toggle('dark');
+    icon.classList.toggle("bi-moon-fill");
+    icon.classList.toggle("bi-brightness-high-fill");
+}
 var uname
 var namecookie = getCookie('uname')
 if(namecookie === undefined) {
