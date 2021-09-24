@@ -13,6 +13,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "jsdom": "^17.0.0",
+    "nanoid": "^3.1.25",
     "sanitize": "^2.1.0",
     "sanitize-html": "^2.5.1",
     "short-uuid": "^4.2.0",

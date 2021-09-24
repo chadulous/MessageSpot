@@ -5,12 +5,14 @@ const server = http.createServer(app);
 const sanitizeHtml = require('sanitize-html');
 const port = process.env.PORT || 8080
 const jsdom = require("jsdom");
+const short = require('short-uuid');
+const { customAlphabet } = require('nanoid');
+const nanoid = customAlphabet('12345abcdefGHIJKL', 5)
 const { JSDOM } = jsdom;
 var showdown  = require('showdown'),
     converter = new showdown.Converter()
 var sanitize = (text) => {
 	text = (new JSDOM(converter.makeHtml(sanitizeHtml(text)))).window.document.querySelector("p").innerHTML
-	console.log(text)
 	return text
 } 
 app.get('/', (req, res) => {
@@ -31,7 +33,6 @@ io.on('connection', socket => {
 	});
 	socket.on('send-chat-message', message => {
 		message = sanitize(message)
-		console.log(message)
 		socket.broadcast.emit('chat-message', { message: message, name: users[socket.id] });
 	});
 	socket.on('disconnect', () => {

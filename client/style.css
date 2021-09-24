@@ -14,6 +14,10 @@ body {
     font-family: 'Open Sans', sans-serif;
     padding: 5px;
 }
+#message-container div:last-child {
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 50%;
+}
 #send-container {
     position: fixed;
     padding-bottom: 30px;
@@ -21,6 +25,10 @@ body {
     max-width: 1200px;
     width: 80%;
     display: flex;
+}
+#send-container:not(.dark) {
+    background-color: #fff;
+    color: #222;
 }
 #message-input {
     flex-grow: 1;
@@ -57,4 +65,7 @@ p {
 }
 .no-bg {
     background: transparent;
+}
+.mode:hover {
+    cursor: pointer;
 }

@@ -90,11 +90,13 @@ function appendMessage(message) {
         messageElement.classList.add('dark')
     }
     messageElement.innerHTML = message;
-    messageElement.querySelectorAll('*').forEach(
-        function(currentValue, currentIndex, listObj) {
-          currentValue.classList.add('dark')
-        },
-        "this"
-    );
+    if(dark) {
+        messageElement.querySelectorAll('*').forEach(
+            function(currentValue, currentIndex, listObj) {
+            currentValue.classList.add('dark')
+            },
+            "this"
+        );
+    }
     messageContainer.append(messageElement)
 }
