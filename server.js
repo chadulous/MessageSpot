@@ -12,7 +12,11 @@ const { JSDOM } = jsdom;
 var showdown  = require('showdown'),
     converter = new showdown.Converter()
 var sanitize = (text) => {
-	text = (new JSDOM(converter.makeHtml(sanitizeHtml(text)))).window.document.querySelector("p").innerHTML
+	try {
+		text = (new JSDOM(converter.makeHtml(sanitizeHtml(text)))).window.document.querySelector("p").innerHTML
+	} catch {
+		text = (new JSDOM(converter.makeHtml(sanitizeHtml(text)))).window.document.innerHTML
+	}
 	return text
 } 
 app.get('/', (req, res) => {

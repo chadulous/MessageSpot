@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MessageSpot</title>
@@ -13,12 +11,13 @@
     <script defer src="/socket.io/socket.io.js"></script>
     <script defer src="/static/script.js"></script>
     <link rel="stylesheet" href="/static/style.css">
+    <script src="https://kit.fontawesome.com/e7cd02ac17.js" crossorigin="anonymous"></script>
 </head>
 <body class='dark'>
   <nav class="no-bg dark navbar fixed-top">
     <div class="no-bg dark container-fluid">
       <div class='change dark'>
-        <i onclick="toggleDark()" class="dark mode bi bi-moon-fill"></i>
+        <i onclick="toggleDark()" class="dark mode fas fa-moon"></i>
       </div>
     </div>
   </nav>
@@ -26,7 +25,7 @@
     <div id="message-container"class="dark"></div>
     <form class="dark form" id="send-container">
       <input type="text" placeholder="Message" class="dark form-control" autocomplete="off" id="message-input">
-      <button type="submit" class="dark btn" id="send-button"><i class="bi dark bi-caret-right-fill"></i></button>
+      <button type="submit" class="dark btn" id="send-button"><i class="dark fas fa-paper-plane"></i></button>
     </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     <script>
@@ -42,8 +41,8 @@
         document.body.classList.toggle('dark');
         dark = !dark
         setCookie('dark', dark, 99999999)
-        icon.classList.toggle("bi-moon-fill");
-        icon.classList.toggle("bi-brightness-high-fill");
+        icon.classList.toggle("fa-moon");
+        icon.classList.toggle("fa-sun");
       }
     </script>
 </body>
