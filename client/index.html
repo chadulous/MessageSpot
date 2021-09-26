@@ -21,12 +21,13 @@
       </div>
     </div>
   </nav>
-  <hr>
-    <div id="message-container"class="dark"></div>
-    <form class="dark form" id="send-container">
-      <input type="text" placeholder="Message" class="dark form-control" autocomplete="off" id="message-input">
-      <button type="submit" class="dark btn" id="send-button"><i class="dark fas fa-paper-plane"></i></button>
-    </form>
+    <div id="message-container" class="dark"></div>
+    <div class="dark send">
+      <form class="dark form" id="send-container">
+        <input type="text" placeholder="Message" class="dark form-control" autocomplete="off" id="message-input">
+        <button type="submit" class="dark btn" id="send-button"><i class="dark fas fa-paper-plane"></i></button>
+      </form>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     <script>
       function toggleDark() {

@@ -9,6 +9,7 @@ body {
     width: 80%;
     max-width: 1200px;
     padding-bottom: 10px;
+    overflow:auto;
 }
 #message-container div {
     font-family: 'Open Sans', sans-serif;
@@ -18,6 +19,15 @@ body {
     font-family: 'Open Sans', sans-serif;
     margin-bottom: 50%;
 }
+.send {
+    position: fixed;
+    width: 80%;
+    bottom: 0;
+    max-width: 1200px;
+    padding-bottom: 10px;
+    overflow:auto;
+}
+/*
 #send-container {
     position: fixed;
     padding-bottom: 30px;
@@ -26,8 +36,17 @@ body {
     width: 80%;
     display: flex;
 }
+*/
+#send-container {
+    position: fixed;
+    padding-bottom: 40px;
+    bottom: 0;
+    max-width: 1200px;
+    width: 80%;
+    display: flex;
+}
 #send-container:not(.dark) {
-    background-color: #fff;
+    background-color: #fff!important;
     color: #222;
 }
 #message-input {
@@ -38,9 +57,14 @@ body {
 .form-control:active,
 .form-control:focus,
 .form-control:focus:active {
-  background-color: #e6e6e6!important;
+  background-color: #fff!important;
   border-color: #808080;
   color: #222;
+}
+hr {
+    border: 1px solid #808080;
+    color: #808080;
+    margin: 1px;
 }
 .form-control.dark,
 .form-control:active.dark,
@@ -48,7 +72,7 @@ body {
 .form-control:focus:active.dark {
   background-color: #222!important;
   border-color: #808080;
-  color: #e6e6e6;
+  color: #fff;
 }
 #send-button {
     display: flex;
@@ -61,11 +85,11 @@ p {
 }
 .dark{
     background-color: #222;
-    color: #e6e6e6;
+    color: #fff;
 }
 .no-bg {
     background: transparent;
 }
 .mode:hover {
-    cursor: pointer;
+    cursor: ew-resize;
 }

@@ -32,10 +32,7 @@ function setCookie(cname, cvalue, exdays) {
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 var themecookie = getCookie('dark')
-console.log(themecookie)
-if(themecookie === undefined) {
-    setCookie('dark', dark, 99999999)
-}
+setCookie('dark', dark, 365)
 console.log(themecookie)
 dark = eval(themecookie)
 if(!dark) {
