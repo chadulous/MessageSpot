@@ -58,7 +58,7 @@ else {
     uname = namecookie
 }
 appendMessage(`${uname} (you) Joined`)
-socket.emit('new-user', uname)
+socket.emit('new-user', `${uname} (web)`)
 socket.on('chat-message', (data) => {
     appendMessage(`${data.name}: ${data.message}`)
 })

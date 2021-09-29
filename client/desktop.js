@@ -1,4 +1,5 @@
 const socket = io('https://nodedotjs-chat-app.herokuapp.com/')
+const {getName, getTheme, setName, setTheme} = require('electron').remote.require('./main.js');
 const messageContainer = document.getElementById('message-container')
 const messageForm = document.getElementById('send-container')
 const messageInput = document.getElementById('message-input')
@@ -50,15 +51,32 @@ if(!dark) {
 }
 var uname
 var namecookie = getCookie('uname')
+var checkuname = () => {
+    if (uname === undefined) {
+        window.setTimeout(checkuname, 100);
+    }
+    else {
+        return
+    }
+}
+var popuppromt = () => {
+    var popup = document.body.querySelector('.popup')
+    popup.querySelector('.popuptext').addEventListener('submit', e => {
+        e.preventDefault()
+        uname = popup.querySelector('.popuptext').querySelector('input').value
+        popup.classList.toggle("show")
+    })
+    checkuname()
+}
 if(namecookie === undefined) {
-    uname = prompt("What is your name? ", "Guest")
+    uname = getName()
     setCookie('uname', uname, 5)
 }
 else {
     uname = namecookie
 }
 appendMessage(`${uname} (you) Joined`)
-socket.emit('new-user', uname)
+socket.emit('new-user', `${uname} (desktop)`)
 socket.on('chat-message', (data) => {
     appendMessage(`${data.name}: ${data.message}`)
 })
