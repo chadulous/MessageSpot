@@ -1,5 +1,4 @@
 const socket = io('https://nodedotjs-chat-app.herokuapp.com/')
-const {getName, getTheme, setName, setTheme} = require('electron').remote.require('./main.js');
 const messageContainer = document.getElementById('message-container')
 const messageForm = document.getElementById('send-container')
 const messageInput = document.getElementById('message-input')

@@ -9,6 +9,7 @@ const short = require('short-uuid');
 const { customAlphabet } = require('nanoid');
 const nanoid = customAlphabet('12345abcdefGHIJKL', 5)
 const { JSDOM } = jsdom;
+const cookieParser = require("cookie-parser");
 var showdown  = require('showdown'),
     converter = new showdown.Converter()
 var sanitize = (text) => {
@@ -22,12 +23,14 @@ var sanitize = (text) => {
 app.get('/', (req, res) => {
 	res.sendFile(__dirname + '/client/index.html');
 });
+app.use(cookieParser)
 app.use('/static',express.static('client'))
 const io = require('socket.io')(server);
 app.get('/sanitize', (req, res) => {
 	data = decodeURI(req.query.string);
 	res.send(sanitize(data));
 });
+app.get('/data')
 const users = {};
 
 io.on('connection', socket => {
