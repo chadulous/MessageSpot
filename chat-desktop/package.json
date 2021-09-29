@@ -1,0 +1,16 @@
+{
+  "name": "chat-desktop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "electron .",
+    "build": "electron-builder"
+  },
+  "author": "Toxik Devs",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^15.0.0",
+    "electron-builder": "^22.11.7"
+  }
+}
